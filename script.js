@@ -1,4 +1,4 @@
-// Your Script here.
+
 
 const lookup = {
   A: "N",
@@ -32,17 +32,25 @@ const lookup = {
 };
 
 function rot13(encodedStr) {
-  let decodedArr = []; // Your Result goes here
-  // Only change code below this line
-  let decodedArr = []; // Your Result goes here
-  // Only change code below this line
-	const string = encodedStr;
-	const arr = [];
- for(let i = 0;i<string.length;i++){
-	string.charAt(i) = string.charAt(i+13);
-	 arr.push(string[i]);
- }
-  return; //return decodedArr
+  let decodedArr = [];         // This will hold the decoded characters
+  const string = encodedStr;  //this will store the input string
+  const arr = [];
+
+  for (let i = 0; i < string.length; i++)
+  {
+    if (lookup[string[i]]) //if the input charater is a lookup object then it will 
+							//take the value of that object and add that to the new arr[] else put the same charaxter
+	{
+      arr.push(lookup[string[i]]);
+    } else {
+      arr.push(string[i]); // Keep non-letter characters unchanged
+    }
+  }
+
+  // Join the array to form the decoded string
+  decodedArr = arr.join('');
+
+  return decodedArr;
 }
 
 // You can test your code by running the above function and printing it to console by pressing the run button at the top. To run it with input 36, uncomment the following line
